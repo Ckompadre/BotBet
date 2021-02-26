@@ -31,6 +31,13 @@ time.sleep(5)
 driver = webdriver.Chrome()
 
 # Functions
+def Expectation():
+    while True:
+        check = driver.find_element_by_id("doubleNumberHash").text
+        if check != "СКРЫТ":
+            time.sleep(7)
+            break
+        
 def BotClickButtom():
     if color == 1:
         btn = driver.find_element_by_class_name('red')
@@ -54,6 +61,9 @@ def BotActions():
     print("Ввожу сумму ставки ...")
     betnum = driver.find_element_by_id("doubleInputBet")
     betnum.send_keys(bet)
+    
+    print("Ожидаю свободное окно ...")
+    Expectation()
 
     print("Запускаю ставку в игру ...")
     i = 1
